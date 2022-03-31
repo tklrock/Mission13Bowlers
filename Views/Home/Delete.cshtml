@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Delete Bowler";
+}
+
+@model Bowler
+
+<div class="text-center">
+    <h2 class="display-4">Are you sure you want to delete @Model.BowlerFirstName @(Model.BowlerMiddleInit != null ? Model.BowlerMiddleInit + ". " : "")@Model.BowlerLastName?</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col col-4"></div>
+        <div class="col col-2">
+            <a asp-controller="Home" asp-action="Index" asp-route-bowlerTeam="" class="btn btn-primary p-1" style="width:100%;">Cancel</a>
+        </div>
+        <div class="col col-2">
+            <form method="post" asp-controller="Home" asp-action="Delete">
+
+                <button type="submit" class="btn btn-dark p-1" style="width:100%;">Delete</button>
+
+                <input type="hidden" asp-for="BowlerID" />
+            </form>
+        </div>
+        <div class="col col-4"></div>
+    </div>
+</div>

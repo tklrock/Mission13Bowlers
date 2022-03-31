@@ -1,0 +1,98 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Bowler Information";
+    List<Team> teamList = ViewBag.Teams;
+}
+
+@model Bowlers.Models.Bowler
+<!--Form for User to fill out-->
+<div class="container text-center">
+    
+    <form method="post">
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <div asp-validation-summary="All" class="col col-6"></div>
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerFirstName" class="col col-3 text-right m-1 p-1">First Name:</label>
+            <input asp-for="BowlerFirstName" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerMiddleInit" class="col col-3 text-right m-1 p-1">Middle Initial:</label>
+            <input asp-for="BowlerMiddleInit" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerLastName" class="col col-3 text-right m-1 p-1">Last Name:</label>
+            <input asp-for="BowlerLastName" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="TeamID" class="col col-3 text-right m-1 p-1">Team: </label>
+            <select class="form-control col col-3" asp-for="TeamID">
+                @foreach (Team team in ViewBag.Teams)
+                {
+                    <option value="@team.TeamID">@team.TeamName</option>
+                }
+            </select>
+            <div class="col col-3 m-1 p-1"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerAddress" class="col col-3 text-right m-1 p-1">Address:</label>
+            <input asp-for="BowlerAddress" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerCity" class="col col-3 text-right m-1 p-1">City:</label>
+            <input asp-for="BowlerCity" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerState" class="col col-3 text-right m-1 p-1">State Code:</label>
+            <input asp-for="BowlerState" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerZip" class="col col-3 text-right m-1 p-1">Zip:</label>
+            <input asp-for="BowlerZip" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <div class="row text-left">
+            <div class="col col-3"></div>
+            <label asp-for="BowlerPhoneNumber" class="col col-3 text-right m-1 p-1">Phone Number:</label>
+            <input asp-for="BowlerPhoneNumber" class="col col-3 m-1 p-1" />
+            <div class="col col-3"></div>
+        </div>
+
+        <input type="hidden" asp-for="BowlerID" />
+        <br />
+        <div class="row">
+            <div class="col col-4"></div>
+            <div class="col col-4"><button type="submit" class="btn btn-info w-100">Save Information</button></div>
+            <div class="col col-4"></div>
+        </div>
+</form>
+
+</div>

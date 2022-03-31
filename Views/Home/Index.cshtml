@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Bowlers List";
+}
+
+@model List<Bowler>
+
+    <div id="types" class="col-3">
+        <vc:teams></vc:teams>
+        <a class="btn btn-block btn-outline-success" asp-controller="Home" asp-action="AddBowler">New Bowler</a>
+    </div>
+
+    <div class="col-9">
+        <div>
+
+            <div class="text-center">
+                <h1 class="display-4">@ViewBag.Header</h1>
+                <table class="table table-dark table-striped table-hover text-left">
+                    <thead class="display">
+                        <tr class="h5">
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var b in Model)
+                        {
+                        <tr>
+                            <td>
+                                @b.BowlerLastName, @b.BowlerFirstName @b.BowlerMiddleInit@(b.BowlerMiddleInit != null ? ".": "")
+                            </td>
+                            <td>@b.Team.TeamName</td>
+                            <td>@b.BowlerAddress</td>
+                            <td>@b.BowlerCity</td>
+                            <td>@b.BowlerState</td>
+                            <td>@b.BowlerZip</td>
+                            <td>@b.BowlerPhoneNumber</td>
+                            <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerId="@b.BowlerID" class="btn btn-outline-info">Edit</a></td>
+                            <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerId="@b.BowlerID" class="btn btn-outline-danger">Delete</a></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+</div>
